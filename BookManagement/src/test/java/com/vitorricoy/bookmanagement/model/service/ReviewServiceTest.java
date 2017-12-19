@@ -12,7 +12,6 @@ import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
-import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
@@ -36,7 +35,7 @@ public class ReviewServiceTest {
     
     @Before
     public void setUp() {
-        service = new ReviewService(new ReviewPersistence());
+        service = new ReviewService(ReviewPersistence.getInstance());
     }
     
     @After

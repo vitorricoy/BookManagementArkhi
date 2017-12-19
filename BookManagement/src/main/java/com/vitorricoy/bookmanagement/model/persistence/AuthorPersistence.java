@@ -12,9 +12,17 @@ import java.util.HashMap;
 public class AuthorPersistence implements AuthorPersistenceInterface{
 
     private HashMap<Long, Author> table;
+    private static AuthorPersistence instance = null;
     
-    public AuthorPersistence(){
+    private AuthorPersistence(){
         table = new HashMap<>();
+    }
+    
+    public static AuthorPersistence getInstance(){
+        if(instance==null){
+            instance = new AuthorPersistence();
+        }
+        return instance;
     }
      
     @Override

@@ -12,9 +12,17 @@ import java.util.HashMap;
 public class ReviewPersistence implements ReviewPersistenceInterface{
     
     private HashMap<Long, Review> table;
+    private static ReviewPersistence instance = null;
     
-    public ReviewPersistence(){
+    private ReviewPersistence(){
         table = new HashMap<>();
+    }
+    
+    public static ReviewPersistence getInstance(){
+        if(instance==null){
+            instance = new ReviewPersistence();
+        }
+        return instance;
     }
     
     @Override

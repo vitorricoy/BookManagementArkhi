@@ -17,7 +17,6 @@ import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
-import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
@@ -45,7 +44,7 @@ public class BookServiceTest {
     
     @Before
     public void setUp() {
-        service = new BookService(new BookPersistence());
+        service = new BookService(BookPersistence.getInstance());
         authors = new ArrayList<>();
         authors.add(new Author(new Long(0), "John", new Date()));
         authors.add(new Author(new Long(1), "Mary", new Date()));
@@ -213,7 +212,7 @@ public class BookServiceTest {
     @org.junit.Test
     public void testInsertBook11() throws Exception {
         System.out.println("insertBook11");
-        Book book = new Book("1940593758372", null, authors, "Reading Inc", release, 10.00, new ArrayList<>());
+        Book book = new Book("1940593758372", null, authors, "Reading Inc", release, 10.00, reviews);
         try{
             Book result = service.insertBook(book);
         }catch(BusinessException ex){
@@ -228,7 +227,7 @@ public class BookServiceTest {
     @org.junit.Test
     public void testInsertBook12() throws Exception {
         System.out.println("insertBook12");
-        Book book = new Book("1940593758372", "", new ArrayList<>(), "Reading Inc", release, 10.00, reviews);
+        Book book = new Book("1940593758372", "", authors, "Reading Inc", release, 10.00, reviews);
         try{
             Book result = service.insertBook(book);
         }catch(BusinessException ex){
@@ -392,7 +391,7 @@ public class BookServiceTest {
         Book book = new Book("1940593758372", "Adventures", authors, "Reading Inc", release, 10.00, reviews);
         service.insertBook(book);
         Book newBook = new Book("1940593758372", "Around", null, "Reading Inc", release, 10.00, reviews);
-        String isbn = null;
+        String isbn = "1940593758372";
         try{
             Book result = service.updateBook(newBook, isbn);
         }catch(BusinessException ex){
@@ -410,7 +409,7 @@ public class BookServiceTest {
         Book book = new Book("1940593758372", "Adventures", authors, "Reading Inc", release, 10.00, reviews);
         service.insertBook(book);
         Book newBook = new Book("1940593758372", "Around", new ArrayList<>(), "Reading Inc", release, 10.00, reviews);
-        String isbn = null;
+        String isbn = "1940593758372";
         try{
             Book result = service.updateBook(newBook, isbn);
         }catch(BusinessException ex){
@@ -428,7 +427,7 @@ public class BookServiceTest {
         Book book = new Book("1940593758372", "Adventures", authors, "Reading Inc", release, 10.00, reviews);
         service.insertBook(book);
         Book newBook = new Book(null, "Around", authors, "Reading Inc", release, 10.00, reviews);
-        String isbn = null;
+        String isbn = "1940593758372";
         try{
             Book result = service.updateBook(newBook, isbn);
         }catch(BusinessException ex){
@@ -446,7 +445,7 @@ public class BookServiceTest {
         Book book = new Book("1940593758372", "Adventures", authors, "Reading Inc", release, 10.00, reviews);
         service.insertBook(book);
         Book newBook = new Book("", "Around", authors, "Reading Inc", release, 10.00, reviews);
-        String isbn = null;
+        String isbn = "1940593758372";
         try{
             Book result = service.updateBook(newBook, isbn);
         }catch(BusinessException ex){
@@ -464,7 +463,7 @@ public class BookServiceTest {
         Book book = new Book("1940593758372", "Adventures", authors, "Reading Inc", release, 10.00, reviews);
         service.insertBook(book);
         Book newBook = new Book("1940593758372", "Around", authors, "Reading Inc", release, null, reviews);
-        String isbn = null;
+        String isbn = "1940593758372";
         try{
             Book result = service.updateBook(newBook, isbn);
         }catch(BusinessException ex){
@@ -482,7 +481,7 @@ public class BookServiceTest {
         Book book = new Book("1940593758372", "Adventures", authors, "Reading Inc", release, 10.00, reviews);
         service.insertBook(book);
         Book newBook = new Book("1940593758372", "Around", authors, null, release, 10.00, reviews);
-        String isbn = null;
+        String isbn = "1940593758372";
         try{
             Book result = service.updateBook(newBook, isbn);
         }catch(BusinessException ex){
@@ -500,7 +499,7 @@ public class BookServiceTest {
         Book book = new Book("1940593758372", "Adventures", authors, "Reading Inc", release, 10.00, reviews);
         service.insertBook(book);
         Book newBook = new Book("1940593758372", "Around", authors, "", release, 10.00, reviews);
-        String isbn = null;
+        String isbn = "1940593758372";
         try{
             Book result = service.updateBook(newBook, isbn);
         }catch(BusinessException ex){
@@ -518,7 +517,7 @@ public class BookServiceTest {
         Book book = new Book("1940593758372", "Adventures", authors, "Reading Inc", release, 10.00, reviews);
         service.insertBook(book);
         Book newBook = new Book("1940593758372", "Around", authors, "Reading Inc", null, 10.00, reviews);
-        String isbn = null;
+        String isbn = "1940593758372";
         try{
             Book result = service.updateBook(newBook, isbn);
         }catch(BusinessException ex){
@@ -536,7 +535,7 @@ public class BookServiceTest {
         Book book = new Book("1940593758372", "Adventures", authors, "Reading Inc", release, 10.00, reviews);
         service.insertBook(book);
         Book newBook = new Book("1940593758372", "Around", authors, "Reading Inc", release, 10.00, null);
-        String isbn = null;
+        String isbn = "1940593758372";
         try{
             Book result = service.updateBook(newBook, isbn);
         }catch(BusinessException ex){
@@ -554,7 +553,7 @@ public class BookServiceTest {
         Book book = new Book("1940593758372", "Adventures", authors, "Reading Inc", release, 10.00, reviews);
         service.insertBook(book);
         Book newBook = new Book("1940593758372", "Around", authors, "Reading Inc", release, 10.00, new ArrayList<>());
-        String isbn = null;
+        String isbn = "1940593758372";
         try{
             Book result = service.updateBook(newBook, isbn);
         }catch(BusinessException ex){
@@ -572,7 +571,7 @@ public class BookServiceTest {
         Book book = new Book("1940593758372", "Adventures", authors, "Reading Inc", release, 10.00, reviews);
         service.insertBook(book);
         Book newBook = new Book("1940593758372", null, authors, "Reading Inc", release, 10.00, reviews);
-        String isbn = null;
+        String isbn = "1940593758372";
         try{
             Book result = service.updateBook(newBook, isbn);
         }catch(BusinessException ex){
@@ -590,7 +589,7 @@ public class BookServiceTest {
         Book book = new Book("1940593758372", "Adventures", authors, "Reading Inc", release, 10.00, reviews);
         service.insertBook(book);
         Book newBook = new Book("1940593758372", "", authors, "Reading Inc", release, 10.00, reviews);
-        String isbn = null;
+        String isbn = "1940593758372";
         try{
             Book result = service.updateBook(newBook, isbn);
         }catch(BusinessException ex){

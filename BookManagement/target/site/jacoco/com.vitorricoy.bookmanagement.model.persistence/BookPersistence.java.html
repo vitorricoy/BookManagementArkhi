@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>BookPersistence.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">BookManagement</a> &gt; <a href="index.source.html" class="el_package">com.vitorricoy.bookmanagement.model.persistence</a> &gt; <span class="el_source">BookPersistence.java</span></div><h1>BookPersistence.java</h1><pre class="source lang-java linenums">package com.vitorricoy.bookmanagement.model.persistence;
+
+import com.vitorricoy.bookmanagement.model.domain.Author;
+import com.vitorricoy.bookmanagement.model.domain.Book;
+import com.vitorricoy.bookmanagement.model.exception.PersistenceException;
+import com.vitorricoy.bookmanagement.model.persistenceInterface.BookPersistenceInterface;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+/**
+ * Book Persistence implemented using RAM
+ * @author vitor
+ */
+public class BookPersistence implements BookPersistenceInterface{
+    
+    private HashMap&lt;String, Book&gt; table;
+    
+<span class="fc" id="L20">    public BookPersistence(){</span>
+<span class="fc" id="L21">        table = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L22">    }</span>
+    
+    @Override
+    public Book insertBook(Book book) throws PersistenceException {
+<span class="fc bfc" id="L26" title="All 2 branches covered.">        if(table.containsKey(book.getIsbn())){</span>
+<span class="fc" id="L27">            throw new PersistenceException(&quot;Duplicated key&quot;);</span>
+        }
+<span class="fc" id="L29">        table.put(book.getIsbn(), book);</span>
+<span class="fc" id="L30">        return book;</span>
+    }
+
+    @Override
+    public Book getBookById(String isbn) throws PersistenceException {
+<span class="fc" id="L35">        Book book = table.get(isbn);</span>
+<span class="fc bfc" id="L36" title="All 2 branches covered.">        if(book==null){</span>
+<span class="fc" id="L37">            throw new PersistenceException(&quot;Book with key &quot; + isbn + &quot; not found&quot;);</span>
+        }
+<span class="fc" id="L39">        return book;</span>
+    }
+
+    @Override
+    public Book removeBook(String isbn) throws PersistenceException {
+<span class="fc" id="L44">        Book book = table.remove(isbn);</span>
+<span class="fc bfc" id="L45" title="All 2 branches covered.">        if(book==null){</span>
+<span class="fc" id="L46">            throw new PersistenceException(&quot;Book with key &quot; + isbn + &quot; not found to be removed&quot;);</span>
+        }
+<span class="fc" id="L48">        return book;</span>
+    }
+
+    @Override
+    public Book updateBook(Book newBook, String isbn) throws PersistenceException {
+<span class="fc" id="L53">        Book book = table.replace(isbn, newBook);</span>
+<span class="fc bfc" id="L54" title="All 2 branches covered.">        if(book==null){</span>
+<span class="fc" id="L55">            throw new PersistenceException(&quot;Book with key &quot; + isbn + &quot; not found to be updated&quot;);</span>
+        }
+<span class="fc" id="L57">        return newBook;</span>
+    }
+
+    @Override
+    public List&lt;Book&gt; getBookByAuthor(Author author) throws PersistenceException {
+<span class="fc" id="L62">        List&lt;Book&gt; books = new ArrayList&lt;&gt;();</span>
+        //Iterate trough persistence table
+<span class="fc bfc" id="L64" title="All 2 branches covered.">        for(Map.Entry&lt;String, Book&gt; b:table.entrySet()){</span>
+<span class="fc" id="L65">            List&lt;Author&gt; authors = b.getValue().getAuthors();</span>
+            //Iterate through each book authors
+<span class="fc bfc" id="L67" title="All 2 branches covered.">            for(Author a: authors){</span>
+                //If the books have the searched author add it in the list
+<span class="fc bfc" id="L69" title="All 2 branches covered.">                if(a.getId().equals(author.getId())){</span>
+<span class="fc" id="L70">                    books.add(b.getValue());</span>
+                }
+<span class="fc" id="L72">            }</span>
+<span class="fc" id="L73">        }</span>
+<span class="fc" id="L74">        return books;</span>
+    }
+    
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>

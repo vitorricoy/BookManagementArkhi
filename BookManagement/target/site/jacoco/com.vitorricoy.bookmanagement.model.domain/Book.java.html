@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>Book.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">BookManagement</a> &gt; <a href="index.source.html" class="el_package">com.vitorricoy.bookmanagement.model.domain</a> &gt; <span class="el_source">Book.java</span></div><h1>Book.java</h1><pre class="source lang-java linenums">package com.vitorricoy.bookmanagement.model.domain;
+
+import java.util.Date;
+import java.util.List;
+
+/**
+ * Representation of a book
+ * @author vitor
+ */
+public class Book {
+    private String isbn;
+    private String Title;
+    private List&lt;Author&gt; authors;
+    private String publisher;
+    private Date releaseDate;
+    private Double price;
+    private List&lt;Review&gt; reviews;
+
+    /**
+     *  Constructor with arguments
+     * @param isbn Book's ISBN code
+     * @param Title Book's Title
+     * @param authors Book's authors
+     * @param publisher Book's publisher
+     * @param releaseDate Book's release date
+     * @param price Book's price
+     * @param reviews Book's reviews
+     */
+<span class="fc" id="L29">    public Book(String isbn, String Title, List&lt;Author&gt; authors, String publisher, Date releaseDate, Double price, List&lt;Review&gt; reviews) {</span>
+<span class="fc" id="L30">        this.isbn = isbn;</span>
+<span class="fc" id="L31">        this.Title = Title;</span>
+<span class="fc" id="L32">        this.authors = authors;</span>
+<span class="fc" id="L33">        this.publisher = publisher;</span>
+<span class="fc" id="L34">        this.releaseDate = releaseDate;</span>
+<span class="fc" id="L35">        this.price = price;</span>
+<span class="fc" id="L36">        this.reviews = reviews;</span>
+<span class="fc" id="L37">    }</span>
+
+    /**
+     * Get ISBN code
+     * @return ISBN code
+     */
+    public String getIsbn() {
+<span class="fc" id="L44">        return isbn;</span>
+    }
+
+    /**
+     * Set ISBN code
+     * @param isbn ISBN code
+     */
+    public void setIsbn(String isbn) {
+<span class="fc" id="L52">        this.isbn = isbn;</span>
+<span class="fc" id="L53">    }</span>
+
+    /**
+     * Get book's title
+     * @return Book's title
+     */
+    public String getTitle() {
+<span class="fc" id="L60">        return Title;</span>
+    }
+
+    /**
+     * Set book's title
+     * @param Title New book's title
+     */
+    public void setTitle(String Title) {
+<span class="fc" id="L68">        this.Title = Title;</span>
+<span class="fc" id="L69">    }</span>
+
+    /**
+     * Get the book's authors
+     * @return A list containing the book's authors
+     */
+    public List&lt;Author&gt; getAuthors() {
+<span class="fc" id="L76">        return authors;</span>
+    }
+
+    /**
+     * Set the book's authors
+     * @param authors A list containing the book's new authors
+     */
+    public void setAuthors(List&lt;Author&gt; authors) {
+<span class="fc" id="L84">        this.authors = authors;</span>
+<span class="fc" id="L85">    }</span>
+
+    /**
+     * Get the book's publisher
+     * @return The book's publisher
+     */
+    public String getPublisher() {
+<span class="fc" id="L92">        return publisher;</span>
+    }
+
+    /**
+     * Set the book's publisher
+     * @param publisher The new book's publisher
+     */
+    public void setPublisher(String publisher) {
+<span class="fc" id="L100">        this.publisher = publisher;</span>
+<span class="fc" id="L101">    }</span>
+
+    /**
+     * Get the book's release date
+     * @return The book's release date
+     */
+    public Date getReleaseDate() {
+<span class="fc" id="L108">        return releaseDate;</span>
+    }
+
+    /**
+     * Set the book's release date
+     * @param releaseDate The book's new release date
+     */
+    public void setReleaseDate(Date releaseDate) {
+<span class="fc" id="L116">        this.releaseDate = releaseDate;</span>
+<span class="fc" id="L117">    }</span>
+
+    /**
+     * Get the book's price
+     * @return The book's price
+     */
+    public Double getPrice() {
+<span class="fc" id="L124">        return price;</span>
+    }
+
+    /**
+     * Set the book's price
+     * @param price The new price
+     */
+    public void setPrice(Double price) {
+<span class="fc" id="L132">        this.price = price;</span>
+<span class="fc" id="L133">    }</span>
+
+    /**
+     * Get the book's reviews
+     * @return A list containing the reviews
+     */
+    public List&lt;Review&gt; getReviews() {
+<span class="fc" id="L140">        return reviews;</span>
+    }
+
+    /**
+     * Set the book's reviews
+     * @param reviews A list containing the new reviews
+     */
+    public void setReviews(List&lt;Review&gt; reviews) {
+<span class="fc" id="L148">        this.reviews = reviews;</span>
+<span class="fc" id="L149">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>

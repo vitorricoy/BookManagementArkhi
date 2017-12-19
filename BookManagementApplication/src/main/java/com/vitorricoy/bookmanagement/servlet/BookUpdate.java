@@ -1,0 +1,61 @@
+package com.vitorricoy.bookmanagement.servlet;
+
+import com.google.gson.Gson;
+import com.vitorricoy.bookmanagement.model.domain.Book;
+import com.vitorricoy.bookmanagement.model.exception.BusinessException;
+import com.vitorricoy.bookmanagement.model.exception.PersistenceException;
+import com.vitorricoy.bookmanagement.model.persistence.BookPersistence;
+import com.vitorricoy.bookmanagement.model.service.BookService;
+import com.vitorricoy.bookmanagement.util.BookUpdateObject;
+import com.vitorricoy.bookmanagement.util.Result;
+import com.vitorricoy.bookmanagement.util.ServletUtil;
+import java.io.IOException;
+import java.io.PrintWriter;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ * Book update servlet
+ * @author vitor
+ */
+@WebServlet(name = "BookUpdate", urlPatterns = {"/BookUpdate"})
+public class BookUpdate extends HttpServlet{
+    private BookService bookService;
+    private Gson gson;
+    private Result result;
+    
+    /**
+     * Handles the HTTP <code>POST</code> method.
+     *
+     * @param request Servlet request
+     * @param response Servlet response
+     * @throws ServletException
+     * @throws java.io.IOException
+     */
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+        request.setCharacterEncoding("UTF-8");
+        response.setContentType("application/json;charset=UTF-8");
+        response.addHeader("Access-Control-Allow-Origin", "*");
+        bookService = new BookService(BookPersistence.getInstance());
+        gson = new Gson();
+        result = new Result();
+        try{
+            String json = ServletUtil.getJson(request);
+            BookUpdateObject update = gson.fromJson(json, BookUpdateObject.class);
+            Book book = bookService.updateBook(update.getBook(), update.getIsbn());
+            result.setStatusOK();
+            result.setContent(book);
+        }catch(BusinessException | PersistenceException ex){
+            result.setStatusBADREQUEST();
+            result.setContent(ex.getMessage());
+        }
+        finally{
+            PrintWriter writer = response.getWriter();
+            writer.println(gson.toJson(result));
+        }
+    }
+}

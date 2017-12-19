@@ -16,9 +16,17 @@ import java.util.Map;
 public class BookPersistence implements BookPersistenceInterface{
     
     private HashMap<String, Book> table;
+    private static BookPersistence instance = null;
     
-    public BookPersistence(){
+    private BookPersistence(){
         table = new HashMap<>();
+    }
+    
+    public static BookPersistence getInstance(){
+        if(instance==null){
+            instance = new BookPersistence();
+        }
+        return instance;
     }
     
     @Override

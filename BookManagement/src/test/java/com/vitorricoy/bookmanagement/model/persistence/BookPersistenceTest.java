@@ -16,7 +16,6 @@ import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
-import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
@@ -43,7 +42,7 @@ public class BookPersistenceTest {
     
     @Before
     public void setUp() {
-        persistence = new BookPersistence();
+        persistence = BookPersistence.getInstance();
         authors = new ArrayList<>();
         authors.add(new Author(new Long(0), "John", new Date()));
         authors.add(new Author(new Long(1), "Mary", new Date()));

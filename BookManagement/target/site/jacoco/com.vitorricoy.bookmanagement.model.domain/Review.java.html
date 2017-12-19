@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>Review.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">BookManagement</a> &gt; <a href="index.source.html" class="el_package">com.vitorricoy.bookmanagement.model.domain</a> &gt; <span class="el_source">Review.java</span></div><h1>Review.java</h1><pre class="source lang-java linenums">package com.vitorricoy.bookmanagement.model.domain;
+
+/**
+ * A reader's review about a Book
+ * @author vitor
+ */
+public class Review {
+    private Long id;
+    private String authorName;
+    private Integer rating;
+    private String reviewTxt;
+
+    /**
+     * Constructor with arguments
+     * @param authorName The review's author name
+     * @param rating The review's author rating of the book
+     * @param reviewTxt The text explaining about the review
+     * @param id The review's id
+     */
+<span class="fc" id="L20">    public Review(Long id, String authorName, Integer rating, String reviewTxt) {</span>
+<span class="fc" id="L21">        this.authorName = authorName;</span>
+<span class="fc" id="L22">        this.rating = rating;</span>
+<span class="fc" id="L23">        this.reviewTxt = reviewTxt; </span>
+<span class="fc" id="L24">        this.id=id;</span>
+<span class="fc" id="L25">    }</span>
+
+    /**
+     * Get the review's author name
+     * @return The review's author name
+     */
+    public String getAuthorName() {
+<span class="fc" id="L32">        return authorName;</span>
+    }
+
+    /**
+     * Set the review's author name
+     * @param authorName The review's author name
+     */
+    public void setAuthorName(String authorName) {
+<span class="fc" id="L40">        this.authorName = authorName;</span>
+<span class="fc" id="L41">    }</span>
+
+    /**
+     * Get the review rating of the book
+     * @return The review rating of the book
+     */
+    public Integer getRating() {
+<span class="fc" id="L48">        return rating;</span>
+    }
+
+    /**
+     * Set the review rating of the book
+     * @param rating The review rating of the book
+     */
+    public void setRating(Integer rating) {
+<span class="fc" id="L56">        this.rating = rating;</span>
+<span class="fc" id="L57">    }</span>
+
+    /**
+     * Get the text explaining the review
+     * @return The text explaining the review
+     */
+    public String getReviewTxt() {
+<span class="fc" id="L64">        return reviewTxt;</span>
+    }
+
+    /**
+     * Set the text explaining the review
+     * @param reviewTxt The text explaining the review
+     */
+    public void setReviewTxt(String reviewTxt) {
+<span class="fc" id="L72">        this.reviewTxt = reviewTxt;</span>
+<span class="fc" id="L73">    }</span>
+
+    /**
+     * Get the review's id
+     * @return The review's id
+     */
+    public Long getId() {
+<span class="fc" id="L80">        return id;</span>
+    }
+
+    /**
+     * Set the review's id
+     * @param id The review's id
+     */
+    public void setId(Long id) {
+<span class="fc" id="L88">        this.id = id;</span>
+<span class="fc" id="L89">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>

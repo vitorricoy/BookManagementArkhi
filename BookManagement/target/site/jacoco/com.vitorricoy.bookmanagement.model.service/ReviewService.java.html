@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>ReviewService.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">BookManagement</a> &gt; <a href="index.source.html" class="el_package">com.vitorricoy.bookmanagement.model.service</a> &gt; <span class="el_source">ReviewService.java</span></div><h1>ReviewService.java</h1><pre class="source lang-java linenums">/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package com.vitorricoy.bookmanagement.model.service;
+
+import com.vitorricoy.bookmanagement.model.domain.Review;
+import com.vitorricoy.bookmanagement.model.exception.BusinessException;
+import com.vitorricoy.bookmanagement.model.exception.PersistenceException;
+import com.vitorricoy.bookmanagement.model.persistenceInterface.ReviewPersistenceInterface;
+import com.vitorricoy.bookmanagement.model.serviceInterface.ReviewServiceInterface;
+
+/**
+ * Review Service
+ * @author vitor
+ */
+public class ReviewService implements ReviewServiceInterface{
+    
+    ReviewPersistenceInterface persistence;
+    
+<span class="fc" id="L22">    public ReviewService(ReviewPersistenceInterface persistence){</span>
+<span class="fc" id="L23">        this.persistence=persistence;</span>
+<span class="fc" id="L24">    }</span>
+
+    @Override
+    public Review insertReview(Review review) throws BusinessException, PersistenceException {
+<span class="fc bfc" id="L28" title="All 4 branches covered.">        if(review.getAuthorName()==null || review.getAuthorName().equals(&quot;&quot;)){</span>
+<span class="fc" id="L29">            throw new BusinessException(&quot;Review author name can't be null or empty&quot;);</span>
+        }
+<span class="fc bfc" id="L31" title="All 2 branches covered.">        if(review.getRating()==null){</span>
+<span class="fc" id="L32">            throw new BusinessException(&quot;Review rating can't be null&quot;);</span>
+        }
+<span class="fc bfc" id="L34" title="All 4 branches covered.">        if(review.getReviewTxt()==null || review.getReviewTxt().equals(&quot;&quot;)){</span>
+<span class="fc" id="L35">            throw new BusinessException(&quot;Review text can't be null or empty&quot;);</span>
+        }
+<span class="fc" id="L37">        return persistence.insertReview(review);</span>
+    }
+
+    @Override
+    public Review getReviewById(Long id) throws BusinessException, PersistenceException {
+<span class="fc bfc" id="L42" title="All 2 branches covered.">        if(id==null){</span>
+<span class="fc" id="L43">            throw new BusinessException(&quot;Id can't be null&quot;);</span>
+        }
+<span class="fc" id="L45">        return persistence.getReviewById(id);</span>
+    }
+
+    @Override
+    public Review removeReview(Long id) throws BusinessException, PersistenceException {
+<span class="fc bfc" id="L50" title="All 2 branches covered.">        if(id==null){</span>
+<span class="fc" id="L51">            throw new BusinessException(&quot;Id can't be null&quot;);</span>
+        }
+<span class="fc" id="L53">        return persistence.removeReview(id);</span>
+    }
+
+    @Override
+    public Review updateReview(Review newReview, Long id) throws BusinessException, PersistenceException {
+<span class="fc bfc" id="L58" title="All 2 branches covered.">        if(id==null){</span>
+<span class="fc" id="L59">            throw new BusinessException(&quot;Id can't be null&quot;);</span>
+        }
+<span class="fc bfc" id="L61" title="All 4 branches covered.">        if(newReview.getAuthorName()==null || newReview.getAuthorName().equals(&quot;&quot;)){</span>
+<span class="fc" id="L62">            throw new BusinessException(&quot;Review author name can't be null or empty&quot;);</span>
+        }
+<span class="fc bfc" id="L64" title="All 2 branches covered.">        if(newReview.getRating()==null){</span>
+<span class="fc" id="L65">            throw new BusinessException(&quot;Review rating can't be null&quot;);</span>
+        }
+<span class="fc bfc" id="L67" title="All 4 branches covered.">        if(newReview.getReviewTxt()==null || newReview.getReviewTxt().equals(&quot;&quot;)){</span>
+<span class="fc" id="L68">            throw new BusinessException(&quot;Review text can't be null or empty&quot;);</span>
+        }
+<span class="fc" id="L70">        newReview.setId(id);</span>
+<span class="fc" id="L71">        return persistence.updateReview(newReview, id);</span>
+    }
+    
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>

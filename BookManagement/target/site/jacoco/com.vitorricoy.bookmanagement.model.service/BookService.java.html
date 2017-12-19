@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>BookService.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">BookManagement</a> &gt; <a href="index.source.html" class="el_package">com.vitorricoy.bookmanagement.model.service</a> &gt; <span class="el_source">BookService.java</span></div><h1>BookService.java</h1><pre class="source lang-java linenums">package com.vitorricoy.bookmanagement.model.service;
+
+import com.vitorricoy.bookmanagement.model.domain.Author;
+import com.vitorricoy.bookmanagement.model.domain.Book;
+import com.vitorricoy.bookmanagement.model.exception.BusinessException;
+import com.vitorricoy.bookmanagement.model.exception.PersistenceException;
+import com.vitorricoy.bookmanagement.model.persistenceInterface.BookPersistenceInterface;
+import com.vitorricoy.bookmanagement.model.serviceInterface.BookServiceInterface;
+import java.util.List;
+
+/**
+ * Book Service
+ * @author vitor
+ */
+public class BookService implements BookServiceInterface{
+    
+    BookPersistenceInterface persistence;
+    
+<span class="fc" id="L19">    public BookService(BookPersistenceInterface persistence){</span>
+<span class="fc" id="L20">        this.persistence=persistence;</span>
+<span class="fc" id="L21">    }</span>
+    
+    @Override
+    public Book insertBook(Book book) throws BusinessException, PersistenceException {
+<span class="fc bfc" id="L25" title="All 4 branches covered.">        if(book.getAuthors()==null || book.getAuthors().isEmpty()){</span>
+<span class="fc" id="L26">            throw new BusinessException(&quot;Book authors can't be null or empty&quot;);</span>
+        }
+<span class="fc bfc" id="L28" title="All 4 branches covered.">        if(book.getIsbn()==null || book.getIsbn().equals(&quot;&quot;)){</span>
+<span class="fc" id="L29">            throw new BusinessException(&quot;Book isbn can't be null or empty&quot;);</span>
+        }
+<span class="fc bfc" id="L31" title="All 2 branches covered.">        if(book.getPrice()==null){</span>
+<span class="fc" id="L32">            throw new BusinessException(&quot;Book price can't be null&quot;);</span>
+        }
+<span class="fc bfc" id="L34" title="All 4 branches covered.">        if(book.getPublisher()==null || book.getPublisher().equals(&quot;&quot;)){</span>
+<span class="fc" id="L35">            throw new BusinessException(&quot;Book publisher can't be null or empty&quot;);</span>
+        }
+<span class="fc bfc" id="L37" title="All 2 branches covered.">        if(book.getReleaseDate()==null){</span>
+<span class="fc" id="L38">            throw new BusinessException(&quot;Book release date can't be null&quot;);</span>
+        }
+<span class="fc bfc" id="L40" title="All 4 branches covered.">        if(book.getReviews()==null || book.getReviews().isEmpty()){</span>
+<span class="fc" id="L41">            throw new BusinessException(&quot;Book reviews can't be null or empty&quot;);</span>
+        }
+<span class="fc bfc" id="L43" title="All 4 branches covered.">        if(book.getTitle()==null || book.getTitle().equals(&quot;&quot;)){</span>
+<span class="fc" id="L44">            throw new BusinessException(&quot;Book title can't be null or empty&quot;);</span>
+        }
+<span class="fc" id="L46">        return persistence.insertBook(book);</span>
+    }
+
+    @Override
+    public Book getBookById(String isbn) throws BusinessException, PersistenceException {
+<span class="fc bfc" id="L51" title="All 4 branches covered.">        if(isbn==null || isbn.equals(&quot;&quot;)){</span>
+<span class="fc" id="L52">            throw new BusinessException(&quot;Book isbn can't be null or empty&quot;);</span>
+        }
+<span class="fc" id="L54">        return persistence.getBookById(isbn);</span>
+    }
+
+    @Override
+    public Book removeBook(String isbn) throws BusinessException, PersistenceException {
+<span class="fc bfc" id="L59" title="All 4 branches covered.">        if(isbn==null || isbn.equals(&quot;&quot;)){</span>
+<span class="fc" id="L60">            throw new BusinessException(&quot;Book isbn can't be null or empty&quot;);</span>
+        }
+<span class="fc" id="L62">        return persistence.removeBook(isbn);</span>
+    }
+
+    @Override
+    public Book updateBook(Book newBook, String isbn) throws BusinessException, PersistenceException {
+<span class="fc bfc" id="L67" title="All 4 branches covered.">        if(isbn==null || isbn.equals(&quot;&quot;)){</span>
+<span class="fc" id="L68">            throw new BusinessException(&quot;Book isbn can't be null or empty&quot;);</span>
+        }
+<span class="fc bfc" id="L70" title="All 4 branches covered.">        if(newBook.getAuthors()==null || newBook.getAuthors().isEmpty()){</span>
+<span class="fc" id="L71">            throw new BusinessException(&quot;Book authors can't be null or empty&quot;);</span>
+        }
+<span class="fc bfc" id="L73" title="All 4 branches covered.">        if(newBook.getIsbn()==null || newBook.getIsbn().equals(&quot;&quot;)){</span>
+<span class="fc" id="L74">            throw new BusinessException(&quot;Book isbn can't be null or empty&quot;);</span>
+        }
+<span class="fc bfc" id="L76" title="All 2 branches covered.">        if(newBook.getPrice()==null){</span>
+<span class="fc" id="L77">            throw new BusinessException(&quot;Book price can't be null&quot;);</span>
+        }
+<span class="fc bfc" id="L79" title="All 4 branches covered.">        if(newBook.getPublisher()==null || newBook.getPublisher().equals(&quot;&quot;)){</span>
+<span class="fc" id="L80">            throw new BusinessException(&quot;Book publisher can't be null or empty&quot;);</span>
+        }
+<span class="fc bfc" id="L82" title="All 2 branches covered.">        if(newBook.getReleaseDate()==null){</span>
+<span class="fc" id="L83">            throw new BusinessException(&quot;Book release date can't be null&quot;);</span>
+        }
+<span class="fc bfc" id="L85" title="All 4 branches covered.">        if(newBook.getReviews()==null || newBook.getReviews().isEmpty()){</span>
+<span class="fc" id="L86">            throw new BusinessException(&quot;Book reviews can't be null or empty&quot;);</span>
+        }
+<span class="fc bfc" id="L88" title="All 4 branches covered.">        if(newBook.getTitle()==null || newBook.getTitle().equals(&quot;&quot;)){</span>
+<span class="fc" id="L89">            throw new BusinessException(&quot;Book title can't be null or empty&quot;);</span>
+        }
+<span class="fc" id="L91">        newBook.setIsbn(isbn);</span>
+<span class="fc" id="L92">        return persistence.updateBook(newBook, isbn);</span>
+    }
+
+    @Override
+    public List&lt;Book&gt; getBookByAuthor(Author author) throws BusinessException, PersistenceException {
+<span class="fc bfc" id="L97" title="All 4 branches covered.">        if(author.getAuthorName()==null || author.getAuthorName().equals(&quot;&quot;)){</span>
+<span class="fc" id="L98">            throw new BusinessException(&quot;Author's name can't be null or empty&quot;);</span>
+        }
+<span class="fc bfc" id="L100" title="All 2 branches covered.">        if(author.getBirthDate()==null){</span>
+<span class="fc" id="L101">            throw new BusinessException(&quot;The author's birth date can't be null&quot;);</span>
+        }
+<span class="fc" id="L103">        return persistence.getBookByAuthor(author);</span>
+    }
+    
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>

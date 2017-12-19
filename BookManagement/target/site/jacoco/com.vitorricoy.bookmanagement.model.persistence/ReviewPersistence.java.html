@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>ReviewPersistence.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">BookManagement</a> &gt; <a href="index.source.html" class="el_package">com.vitorricoy.bookmanagement.model.persistence</a> &gt; <span class="el_source">ReviewPersistence.java</span></div><h1>ReviewPersistence.java</h1><pre class="source lang-java linenums">package com.vitorricoy.bookmanagement.model.persistence;
+
+import com.vitorricoy.bookmanagement.model.domain.Review;
+import com.vitorricoy.bookmanagement.model.exception.PersistenceException;
+import com.vitorricoy.bookmanagement.model.persistenceInterface.ReviewPersistenceInterface;
+import java.util.HashMap;
+
+/**
+ * Review Persistence implemented using RAM
+ * @author vitor
+ */
+public class ReviewPersistence implements ReviewPersistenceInterface{
+    
+    private HashMap&lt;Long, Review&gt; table;
+    
+<span class="fc" id="L16">    public ReviewPersistence(){</span>
+<span class="fc" id="L17">        table = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L18">    }</span>
+    
+    @Override
+    public Review insertReview(Review review) throws PersistenceException {
+<span class="fc bfc" id="L22" title="All 2 branches covered.">        if(review.getId()==null){</span>
+<span class="fc" id="L23">            review.setId(new Long(table.size()));</span>
+        }
+<span class="fc bfc" id="L25" title="All 2 branches covered.">        if(table.containsKey(review.getId())){</span>
+<span class="fc" id="L26">            throw new PersistenceException(&quot;Duplicated Key&quot;);</span>
+        }
+<span class="fc" id="L28">        table.put(review.getId(), review);</span>
+<span class="fc" id="L29">        return review;</span>
+    }
+
+    @Override
+    public Review getReviewById(Long id) throws PersistenceException {
+<span class="fc" id="L34">        Review r = table.get(id);</span>
+<span class="fc bfc" id="L35" title="All 2 branches covered.">        if(r==null){</span>
+<span class="fc" id="L36">            throw new PersistenceException(&quot;No review found with key &quot; + id);</span>
+        }
+<span class="fc" id="L38">        return r;</span>
+    }
+
+    @Override
+    public Review removeReview(Long id) throws PersistenceException {
+<span class="fc" id="L43">        Review r = table.remove(id);</span>
+<span class="fc bfc" id="L44" title="All 2 branches covered.">        if(r==null){</span>
+<span class="fc" id="L45">            throw new PersistenceException(&quot;No review found with key &quot; + id + &quot; to be removed&quot;);</span>
+        }
+<span class="fc" id="L47">        return r;</span>
+    }
+
+    @Override
+    public Review updateReview(Review newReview, Long id) throws PersistenceException {
+<span class="fc" id="L52">        Review r = table.replace(id, newReview);</span>
+<span class="fc bfc" id="L53" title="All 2 branches covered.">        if(r==null){</span>
+<span class="fc" id="L54">            throw new PersistenceException(&quot;No review found with key &quot; + id + &quot; to be updated&quot;);</span>
+        }
+<span class="fc" id="L56">        return newReview;</span>
+    }
+    
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>
