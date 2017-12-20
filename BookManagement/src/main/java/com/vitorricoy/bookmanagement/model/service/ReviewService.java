@@ -10,6 +10,7 @@ import com.vitorricoy.bookmanagement.model.exception.BusinessException;
 import com.vitorricoy.bookmanagement.model.exception.PersistenceException;
 import com.vitorricoy.bookmanagement.model.persistenceInterface.ReviewPersistenceInterface;
 import com.vitorricoy.bookmanagement.model.serviceInterface.ReviewServiceInterface;
+import java.util.List;
 
 /**
  * Review Service
@@ -69,6 +70,11 @@ public class ReviewService implements ReviewServiceInterface{
         }
         newReview.setId(id);
         return persistence.updateReview(newReview, id);
+    }
+
+    @Override
+    public List<Review> listAll() throws BusinessException, PersistenceException {
+        return persistence.listAll();
     }
     
 }

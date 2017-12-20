@@ -3,7 +3,9 @@
 import com.vitorricoy.bookmanagement.model.domain.Author;
 import com.vitorricoy.bookmanagement.model.exception.PersistenceException;
 import com.vitorricoy.bookmanagement.model.persistenceInterface.AuthorPersistenceInterface;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * Author Persistence implemented using RAM
@@ -12,61 +14,66 @@ import java.util.HashMap;
 public class AuthorPersistence implements AuthorPersistenceInterface{
 
     private HashMap&lt;Long, Author&gt; table;
-<span class="fc" id="L15">    private static AuthorPersistence instance = null;</span>
+<span class="fc" id="L17">    private static AuthorPersistence instance = null;</span>
     
-<span class="fc" id="L17">    private AuthorPersistence(){</span>
-<span class="fc" id="L18">        table = new HashMap&lt;&gt;();</span>
-<span class="fc" id="L19">    }</span>
+<span class="fc" id="L19">    private AuthorPersistence(){</span>
+<span class="fc" id="L20">        table = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L21">    }</span>
     
     public static AuthorPersistence getInstance(){
-<span class="fc bfc" id="L22" title="All 2 branches covered.">        if(instance==null){</span>
-<span class="fc" id="L23">            instance = new AuthorPersistence();</span>
+<span class="fc bfc" id="L24" title="All 2 branches covered.">        if(instance==null){</span>
+<span class="fc" id="L25">            instance = new AuthorPersistence();</span>
         }
-<span class="fc" id="L25">        return instance;</span>
+<span class="fc" id="L27">        return instance;</span>
     }
      
     @Override
     public Author insertAuthor(Author author) throws PersistenceException {
-<span class="fc bfc" id="L30" title="All 2 branches covered.">        if(author.getId()==null){</span>
-<span class="fc" id="L31">            author.setId(new Long(table.size()));</span>
+<span class="fc bfc" id="L32" title="All 2 branches covered.">        if(author.getId()==null){</span>
+<span class="fc" id="L33">            author.setId(new Long(table.size()));</span>
         }
-<span class="fc bfc" id="L33" title="All 2 branches covered.">        if(table.containsKey(author.getId())){</span>
-<span class="fc" id="L34">            throw new PersistenceException(&quot;Duplicated Key&quot;);</span>
+<span class="fc bfc" id="L35" title="All 2 branches covered.">        if(table.containsKey(author.getId())){</span>
+<span class="fc" id="L36">            throw new PersistenceException(&quot;Duplicated Key&quot;);</span>
         }
-<span class="fc" id="L36">        table.put(author.getId(), author);</span>
-<span class="fc" id="L37">        return author;</span>
+<span class="fc" id="L38">        table.put(author.getId(), author);</span>
+<span class="fc" id="L39">        return author;</span>
     }
 
     @Override
     public Author getAuthorById(Long id) throws PersistenceException {
-<span class="fc" id="L42">        Author author = table.get(id);</span>
-<span class="fc bfc" id="L43" title="All 2 branches covered.">        if(author==null){</span>
-<span class="fc" id="L44">            throw new PersistenceException(&quot;Author with key &quot; + id + &quot; not found&quot;);</span>
+<span class="fc" id="L44">        Author author = table.get(id);</span>
+<span class="fc bfc" id="L45" title="All 2 branches covered.">        if(author==null){</span>
+<span class="fc" id="L46">            throw new PersistenceException(&quot;Author with key &quot; + id + &quot; not found&quot;);</span>
         }
-<span class="fc" id="L46">        return author;</span>
+<span class="fc" id="L48">        return author;</span>
     }
 
     @Override
     public Author removeAuthor(Long id) throws PersistenceException {
-<span class="fc" id="L51">        Author author = table.remove(id);</span>
-<span class="fc bfc" id="L52" title="All 2 branches covered.">        if(author==null){</span>
-<span class="fc" id="L53">            throw new PersistenceException(&quot;Author with key &quot; + id + &quot; not found to be removed&quot;);</span>
+<span class="fc" id="L53">        Author author = table.remove(id);</span>
+<span class="fc bfc" id="L54" title="All 2 branches covered.">        if(author==null){</span>
+<span class="fc" id="L55">            throw new PersistenceException(&quot;Author with key &quot; + id + &quot; not found to be removed&quot;);</span>
         }
-<span class="fc" id="L55">        return author;</span>
+<span class="fc" id="L57">        return author;</span>
     }
 
     @Override
     public Author updateAuthor(Author newAuthor, Long id) throws PersistenceException {
-<span class="fc" id="L60">        Author old = table.replace(id, newAuthor);</span>
-<span class="fc bfc" id="L61" title="All 2 branches covered.">        if(old==null){</span>
-<span class="fc" id="L62">            throw new PersistenceException(&quot;Author with key &quot; + id + &quot; not found to be updated&quot;);</span>
+<span class="fc" id="L62">        Author old = table.replace(id, newAuthor);</span>
+<span class="fc bfc" id="L63" title="All 2 branches covered.">        if(old==null){</span>
+<span class="fc" id="L64">            throw new PersistenceException(&quot;Author with key &quot; + id + &quot; not found to be updated&quot;);</span>
         }
-<span class="fc" id="L64">        return newAuthor;</span>
+<span class="fc" id="L66">        return newAuthor;</span>
     }
     
     public void cleanData(){
-<span class="fc" id="L68">        table = new HashMap&lt;&gt;();</span>
-<span class="fc" id="L69">    }</span>
+<span class="fc" id="L70">        table = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L71">    }</span>
+
+    @Override
+    public List&lt;Author&gt; listAll() throws PersistenceException {
+<span class="fc" id="L75">        return new ArrayList(table.values());</span>
+    }
     
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>

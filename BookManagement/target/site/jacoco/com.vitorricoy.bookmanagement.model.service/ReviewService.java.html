@@ -10,6 +10,7 @@ import com.vitorricoy.bookmanagement.model.exception.BusinessException;
 import com.vitorricoy.bookmanagement.model.exception.PersistenceException;
 import com.vitorricoy.bookmanagement.model.persistenceInterface.ReviewPersistenceInterface;
 import com.vitorricoy.bookmanagement.model.serviceInterface.ReviewServiceInterface;
+import java.util.List;
 
 /**
  * Review Service
@@ -19,56 +20,61 @@ public class ReviewService implements ReviewServiceInterface{
     
     ReviewPersistenceInterface persistence;
     
-<span class="fc" id="L22">    public ReviewService(ReviewPersistenceInterface persistence){</span>
-<span class="fc" id="L23">        this.persistence=persistence;</span>
-<span class="fc" id="L24">    }</span>
+<span class="fc" id="L23">    public ReviewService(ReviewPersistenceInterface persistence){</span>
+<span class="fc" id="L24">        this.persistence=persistence;</span>
+<span class="fc" id="L25">    }</span>
 
     @Override
     public Review insertReview(Review review) throws BusinessException, PersistenceException {
-<span class="fc bfc" id="L28" title="All 4 branches covered.">        if(review.getAuthorName()==null || review.getAuthorName().equals(&quot;&quot;)){</span>
-<span class="fc" id="L29">            throw new BusinessException(&quot;Review author name can't be null or empty&quot;);</span>
+<span class="fc bfc" id="L29" title="All 4 branches covered.">        if(review.getAuthorName()==null || review.getAuthorName().equals(&quot;&quot;)){</span>
+<span class="fc" id="L30">            throw new BusinessException(&quot;Review author name can't be null or empty&quot;);</span>
         }
-<span class="fc bfc" id="L31" title="All 2 branches covered.">        if(review.getRating()==null){</span>
-<span class="fc" id="L32">            throw new BusinessException(&quot;Review rating can't be null&quot;);</span>
+<span class="fc bfc" id="L32" title="All 2 branches covered.">        if(review.getRating()==null){</span>
+<span class="fc" id="L33">            throw new BusinessException(&quot;Review rating can't be null&quot;);</span>
         }
-<span class="fc bfc" id="L34" title="All 4 branches covered.">        if(review.getReviewTxt()==null || review.getReviewTxt().equals(&quot;&quot;)){</span>
-<span class="fc" id="L35">            throw new BusinessException(&quot;Review text can't be null or empty&quot;);</span>
+<span class="fc bfc" id="L35" title="All 4 branches covered.">        if(review.getReviewTxt()==null || review.getReviewTxt().equals(&quot;&quot;)){</span>
+<span class="fc" id="L36">            throw new BusinessException(&quot;Review text can't be null or empty&quot;);</span>
         }
-<span class="fc" id="L37">        return persistence.insertReview(review);</span>
+<span class="fc" id="L38">        return persistence.insertReview(review);</span>
     }
 
     @Override
     public Review getReviewById(Long id) throws BusinessException, PersistenceException {
-<span class="fc bfc" id="L42" title="All 2 branches covered.">        if(id==null){</span>
-<span class="fc" id="L43">            throw new BusinessException(&quot;Id can't be null&quot;);</span>
+<span class="fc bfc" id="L43" title="All 2 branches covered.">        if(id==null){</span>
+<span class="fc" id="L44">            throw new BusinessException(&quot;Id can't be null&quot;);</span>
         }
-<span class="fc" id="L45">        return persistence.getReviewById(id);</span>
+<span class="fc" id="L46">        return persistence.getReviewById(id);</span>
     }
 
     @Override
     public Review removeReview(Long id) throws BusinessException, PersistenceException {
-<span class="fc bfc" id="L50" title="All 2 branches covered.">        if(id==null){</span>
-<span class="fc" id="L51">            throw new BusinessException(&quot;Id can't be null&quot;);</span>
+<span class="fc bfc" id="L51" title="All 2 branches covered.">        if(id==null){</span>
+<span class="fc" id="L52">            throw new BusinessException(&quot;Id can't be null&quot;);</span>
         }
-<span class="fc" id="L53">        return persistence.removeReview(id);</span>
+<span class="fc" id="L54">        return persistence.removeReview(id);</span>
     }
 
     @Override
     public Review updateReview(Review newReview, Long id) throws BusinessException, PersistenceException {
-<span class="fc bfc" id="L58" title="All 2 branches covered.">        if(id==null){</span>
-<span class="fc" id="L59">            throw new BusinessException(&quot;Id can't be null&quot;);</span>
+<span class="fc bfc" id="L59" title="All 2 branches covered.">        if(id==null){</span>
+<span class="fc" id="L60">            throw new BusinessException(&quot;Id can't be null&quot;);</span>
         }
-<span class="fc bfc" id="L61" title="All 4 branches covered.">        if(newReview.getAuthorName()==null || newReview.getAuthorName().equals(&quot;&quot;)){</span>
-<span class="fc" id="L62">            throw new BusinessException(&quot;Review author name can't be null or empty&quot;);</span>
+<span class="fc bfc" id="L62" title="All 4 branches covered.">        if(newReview.getAuthorName()==null || newReview.getAuthorName().equals(&quot;&quot;)){</span>
+<span class="fc" id="L63">            throw new BusinessException(&quot;Review author name can't be null or empty&quot;);</span>
         }
-<span class="fc bfc" id="L64" title="All 2 branches covered.">        if(newReview.getRating()==null){</span>
-<span class="fc" id="L65">            throw new BusinessException(&quot;Review rating can't be null&quot;);</span>
+<span class="fc bfc" id="L65" title="All 2 branches covered.">        if(newReview.getRating()==null){</span>
+<span class="fc" id="L66">            throw new BusinessException(&quot;Review rating can't be null&quot;);</span>
         }
-<span class="fc bfc" id="L67" title="All 4 branches covered.">        if(newReview.getReviewTxt()==null || newReview.getReviewTxt().equals(&quot;&quot;)){</span>
-<span class="fc" id="L68">            throw new BusinessException(&quot;Review text can't be null or empty&quot;);</span>
+<span class="fc bfc" id="L68" title="All 4 branches covered.">        if(newReview.getReviewTxt()==null || newReview.getReviewTxt().equals(&quot;&quot;)){</span>
+<span class="fc" id="L69">            throw new BusinessException(&quot;Review text can't be null or empty&quot;);</span>
         }
-<span class="fc" id="L70">        newReview.setId(id);</span>
-<span class="fc" id="L71">        return persistence.updateReview(newReview, id);</span>
+<span class="fc" id="L71">        newReview.setId(id);</span>
+<span class="fc" id="L72">        return persistence.updateReview(newReview, id);</span>
+    }
+
+    @Override
+    public List&lt;Review&gt; listAll() throws BusinessException, PersistenceException {
+<span class="fc" id="L77">        return persistence.listAll();</span>
     }
     
 }

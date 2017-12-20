@@ -313,4 +313,18 @@ public class ReviewServiceTest {
         fail("Accepted empty review text");
     }
     
+    /**
+     * Test of listAll method, of class ReviewService.
+     */
+    @org.junit.Test
+    public void listAll() throws Exception {
+        System.out.println("listAll");
+        Review review = new Review(new Long(0), "Max", 9, "It's excellent");
+        int size1 = service.listAll().size();
+        assertEquals(size1, 0);
+        service.insertReview(review);
+        int size2 = service.listAll().size();
+        assertEquals(size2, 1);
+    }
+    
 }

@@ -85,5 +85,10 @@ public class BookPersistence implements BookPersistenceInterface{
     public void cleanData(){
         table = new HashMap<>();
     }
+
+    @Override
+    public List<Book> listAll() throws PersistenceException {
+        return new ArrayList(table.values());
+    }
     
 }

@@ -8,6 +8,7 @@ package com.vitorricoy.bookmanagement.model.serviceInterface;
 import com.vitorricoy.bookmanagement.model.domain.Review;
 import com.vitorricoy.bookmanagement.model.exception.BusinessException;
 import com.vitorricoy.bookmanagement.model.exception.PersistenceException;
+import java.util.List;
 
 /**
  * Interface to define the ReviewService's methods
@@ -50,4 +51,13 @@ public interface ReviewServiceInterface {
      * @throws com.vitorricoy.bookmanagement.model.exception.PersistenceException
      */
     public Review updateReview(Review newReview, Long id) throws BusinessException, PersistenceException;
+    
+    /**
+     * List all reviews
+     * @return A list with all reviews
+     * @throws com.vitorricoy.bookmanagement.model.exception.BusinessException
+     * @throws com.vitorricoy.bookmanagement.model.exception.PersistenceException
+     */
+    public List<Review> listAll() throws BusinessException, PersistenceException;
+    
 }

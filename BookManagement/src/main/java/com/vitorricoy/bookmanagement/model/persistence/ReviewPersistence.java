@@ -3,7 +3,9 @@ package com.vitorricoy.bookmanagement.model.persistence;
 import com.vitorricoy.bookmanagement.model.domain.Review;
 import com.vitorricoy.bookmanagement.model.exception.PersistenceException;
 import com.vitorricoy.bookmanagement.model.persistenceInterface.ReviewPersistenceInterface;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * Review Persistence implemented using RAM
@@ -66,5 +68,10 @@ public class ReviewPersistence implements ReviewPersistenceInterface{
     
     public void cleanData(){
         table = new HashMap<>();
+    }
+
+    @Override
+    public List<Review> listAll() throws PersistenceException {
+        return new ArrayList(table.values());
     }
 }

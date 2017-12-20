@@ -102,6 +102,11 @@ public class BookService implements BookServiceInterface{
         }
 <span class="fc" id="L103">        return persistence.getBookByAuthor(author);</span>
     }
+
+    @Override
+    public List&lt;Book&gt; listAll() throws BusinessException, PersistenceException {
+<span class="fc" id="L108">        return persistence.listAll();</span>
+    }
     
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>

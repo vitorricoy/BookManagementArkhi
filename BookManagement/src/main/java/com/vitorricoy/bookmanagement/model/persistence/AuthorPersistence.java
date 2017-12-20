@@ -3,7 +3,9 @@ package com.vitorricoy.bookmanagement.model.persistence;
 import com.vitorricoy.bookmanagement.model.domain.Author;
 import com.vitorricoy.bookmanagement.model.exception.PersistenceException;
 import com.vitorricoy.bookmanagement.model.persistenceInterface.AuthorPersistenceInterface;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * Author Persistence implemented using RAM
@@ -66,6 +68,11 @@ public class AuthorPersistence implements AuthorPersistenceInterface{
     
     public void cleanData(){
         table = new HashMap<>();
+    }
+
+    @Override
+    public List<Author> listAll() throws PersistenceException {
+        return new ArrayList(table.values());
     }
     
 }

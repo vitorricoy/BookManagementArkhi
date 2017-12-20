@@ -176,4 +176,19 @@ public class AuthorPersistenceTest {
         }
         fail("Updated an invalid key");
     }
+    
+    /**
+     * Test of listAll method, of class AuthorPersistence.
+     */
+    @org.junit.Test
+    public void listAll() throws Exception {
+        System.out.println("listAll");
+        Author author = new Author(new Long(0), "John", new Date());
+        int size1 = persistence.listAll().size();
+        assertEquals(size1, 0);
+        persistence.insertAuthor(author);
+        int size2 = persistence.listAll().size();
+        assertEquals(size2, 1);
+    }
+    
 }

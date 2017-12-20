@@ -50,4 +50,11 @@ public interface BookPersistenceInterface {
      * @throws com.vitorricoy.bookmanagement.model.exception.PersistenceException
      */
     public List<Book> getBookByAuthor(Author author) throws PersistenceException;
+    
+    /**
+     * List all books
+     * @return A list with all books
+     * @throws com.vitorricoy.bookmanagement.model.exception.PersistenceException
+     */
+    public List<Book> listAll() throws PersistenceException;
 }

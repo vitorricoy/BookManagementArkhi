@@ -3,7 +3,9 @@
 import com.vitorricoy.bookmanagement.model.domain.Review;
 import com.vitorricoy.bookmanagement.model.exception.PersistenceException;
 import com.vitorricoy.bookmanagement.model.persistenceInterface.ReviewPersistenceInterface;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * Review Persistence implemented using RAM
@@ -12,60 +14,65 @@ import java.util.HashMap;
 public class ReviewPersistence implements ReviewPersistenceInterface{
     
     private HashMap&lt;Long, Review&gt; table;
-<span class="fc" id="L15">    private static ReviewPersistence instance = null;</span>
+<span class="fc" id="L17">    private static ReviewPersistence instance = null;</span>
     
-<span class="fc" id="L17">    private ReviewPersistence(){</span>
-<span class="fc" id="L18">        table = new HashMap&lt;&gt;();</span>
-<span class="fc" id="L19">    }</span>
+<span class="fc" id="L19">    private ReviewPersistence(){</span>
+<span class="fc" id="L20">        table = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L21">    }</span>
     
     public static ReviewPersistence getInstance(){
-<span class="fc bfc" id="L22" title="All 2 branches covered.">        if(instance==null){</span>
-<span class="fc" id="L23">            instance = new ReviewPersistence();</span>
+<span class="fc bfc" id="L24" title="All 2 branches covered.">        if(instance==null){</span>
+<span class="fc" id="L25">            instance = new ReviewPersistence();</span>
         }
-<span class="fc" id="L25">        return instance;</span>
+<span class="fc" id="L27">        return instance;</span>
     }
     
     @Override
     public Review insertReview(Review review) throws PersistenceException {
-<span class="fc bfc" id="L30" title="All 2 branches covered.">        if(review.getId()==null){</span>
-<span class="fc" id="L31">            review.setId(new Long(table.size()));</span>
+<span class="fc bfc" id="L32" title="All 2 branches covered.">        if(review.getId()==null){</span>
+<span class="fc" id="L33">            review.setId(new Long(table.size()));</span>
         }
-<span class="fc bfc" id="L33" title="All 2 branches covered.">        if(table.containsKey(review.getId())){</span>
-<span class="fc" id="L34">            throw new PersistenceException(&quot;Duplicated Key&quot;);</span>
+<span class="fc bfc" id="L35" title="All 2 branches covered.">        if(table.containsKey(review.getId())){</span>
+<span class="fc" id="L36">            throw new PersistenceException(&quot;Duplicated Key&quot;);</span>
         }
-<span class="fc" id="L36">        table.put(review.getId(), review);</span>
-<span class="fc" id="L37">        return review;</span>
+<span class="fc" id="L38">        table.put(review.getId(), review);</span>
+<span class="fc" id="L39">        return review;</span>
     }
 
     @Override
     public Review getReviewById(Long id) throws PersistenceException {
-<span class="fc" id="L42">        Review r = table.get(id);</span>
-<span class="fc bfc" id="L43" title="All 2 branches covered.">        if(r==null){</span>
-<span class="fc" id="L44">            throw new PersistenceException(&quot;No review found with key &quot; + id);</span>
+<span class="fc" id="L44">        Review r = table.get(id);</span>
+<span class="fc bfc" id="L45" title="All 2 branches covered.">        if(r==null){</span>
+<span class="fc" id="L46">            throw new PersistenceException(&quot;No review found with key &quot; + id);</span>
         }
-<span class="fc" id="L46">        return r;</span>
+<span class="fc" id="L48">        return r;</span>
     }
 
     @Override
     public Review removeReview(Long id) throws PersistenceException {
-<span class="fc" id="L51">        Review r = table.remove(id);</span>
-<span class="fc bfc" id="L52" title="All 2 branches covered.">        if(r==null){</span>
-<span class="fc" id="L53">            throw new PersistenceException(&quot;No review found with key &quot; + id + &quot; to be removed&quot;);</span>
+<span class="fc" id="L53">        Review r = table.remove(id);</span>
+<span class="fc bfc" id="L54" title="All 2 branches covered.">        if(r==null){</span>
+<span class="fc" id="L55">            throw new PersistenceException(&quot;No review found with key &quot; + id + &quot; to be removed&quot;);</span>
         }
-<span class="fc" id="L55">        return r;</span>
+<span class="fc" id="L57">        return r;</span>
     }
 
     @Override
     public Review updateReview(Review newReview, Long id) throws PersistenceException {
-<span class="fc" id="L60">        Review r = table.replace(id, newReview);</span>
-<span class="fc bfc" id="L61" title="All 2 branches covered.">        if(r==null){</span>
-<span class="fc" id="L62">            throw new PersistenceException(&quot;No review found with key &quot; + id + &quot; to be updated&quot;);</span>
+<span class="fc" id="L62">        Review r = table.replace(id, newReview);</span>
+<span class="fc bfc" id="L63" title="All 2 branches covered.">        if(r==null){</span>
+<span class="fc" id="L64">            throw new PersistenceException(&quot;No review found with key &quot; + id + &quot; to be updated&quot;);</span>
         }
-<span class="fc" id="L64">        return newReview;</span>
+<span class="fc" id="L66">        return newReview;</span>
     }
     
     public void cleanData(){
-<span class="fc" id="L68">        table = new HashMap&lt;&gt;();</span>
-<span class="fc" id="L69">    }</span>
+<span class="fc" id="L70">        table = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L71">    }</span>
+
+    @Override
+    public List&lt;Review&gt; listAll() throws PersistenceException {
+<span class="fc" id="L75">        return new ArrayList(table.values());</span>
+    }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>

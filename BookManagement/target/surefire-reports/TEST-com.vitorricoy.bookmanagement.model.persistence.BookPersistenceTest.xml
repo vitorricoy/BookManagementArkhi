@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="9" failures="0" name="com.vitorricoy.bookmanagement.model.persistence.BookPersistenceTest" time="0.019" errors="0" skipped="0">
+<testsuite tests="10" failures="0" name="com.vitorricoy.bookmanagement.model.persistence.BookPersistenceTest" time="0" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.8.0_152\jre\bin"/>
@@ -69,5 +69,6 @@
   <testcase classname="com.vitorricoy.bookmanagement.model.persistence.BookPersistenceTest" name="testRemoveBook2" time="0"/>
   <testcase classname="com.vitorricoy.bookmanagement.model.persistence.BookPersistenceTest" name="testInsertBook1" time="0"/>
   <testcase classname="com.vitorricoy.bookmanagement.model.persistence.BookPersistenceTest" name="testInsertBook2" time="0"/>
+  <testcase classname="com.vitorricoy.bookmanagement.model.persistence.BookPersistenceTest" name="listAll" time="0"/>
   <testcase classname="com.vitorricoy.bookmanagement.model.persistence.BookPersistenceTest" name="testGetBookByAuthor1" time="0"/>
 </testsuite>

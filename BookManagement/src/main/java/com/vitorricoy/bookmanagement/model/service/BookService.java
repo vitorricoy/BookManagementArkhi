@@ -102,5 +102,10 @@ public class BookService implements BookServiceInterface{
         }
         return persistence.getBookByAuthor(author);
     }
+
+    @Override
+    public List<Book> listAll() throws BusinessException, PersistenceException {
+        return persistence.listAll();
+    }
     
 }

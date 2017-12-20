@@ -10,6 +10,7 @@ import com.vitorricoy.bookmanagement.model.exception.BusinessException;
 import com.vitorricoy.bookmanagement.model.exception.PersistenceException;
 import com.vitorricoy.bookmanagement.model.persistenceInterface.AuthorPersistenceInterface;
 import com.vitorricoy.bookmanagement.model.serviceInterface.AuthorServiceInterface;
+import java.util.List;
 
 /**
  * Author Service
@@ -63,6 +64,11 @@ public class AuthorService implements AuthorServiceInterface{
         }
         newAuthor.setId(id);
         return persistence.updateAuthor(newAuthor, id);
+    }
+
+    @Override
+    public List<Author> listAll() throws BusinessException, PersistenceException {
+        return persistence.listAll();
     }
     
 }

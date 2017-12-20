@@ -662,4 +662,18 @@ public class BookServiceTest {
         fail("Accepted null birth date");
     }
     
+    /**
+     * Test of listAll method, of class BookService.
+     */
+    @org.junit.Test
+    public void listAll() throws Exception {
+        System.out.println("listAll");
+        Book book = new Book("1940593744332", "Trips", authors, "Reading Inc", release, 30.00, reviews);
+        int size1 = service.listAll().size();
+        assertEquals(size1, 0);
+        service.insertBook(book);
+        int size2 = service.listAll().size();
+        assertEquals(size2, 1);
+    }
+    
 }

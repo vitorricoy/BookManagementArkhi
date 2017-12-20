@@ -1,0 +1,27 @@
+<div class="row" ng-controller="ShowBookViewModel">
+    <h4>ISBN: {{currentBook.isbn}}</h4>
+    <br/>
+    <h4>Titulo: {{currentBook.Title}}</h4>
+    <br/>
+    <h4>Autores:</h4>
+    <p ng-repeat="author in currentBook.authors">{{author.authorName}}</p>
+    <br/>
+    <h4>Editora {{currentBook.publisher}}</h4>
+    <br/>
+    <h4>Lançamento: {{currentBook.releaseDate | date:'dd-MM-yyyy'}}</h4>
+    <br/>
+    <h4>Preço: {{price}}</h4>
+    <br/>
+    <h4>Críticas</h4>
+    <div ng-repeat="review in currentBook.reviews">
+        <p>Autor: {{review.authorName}}</p>
+        <p>Nota: {{review.rating}}</p>
+        <p>Explicação: {{review.reviewTxt}}</p>
+    </div>
+    <br/>
+    <div>
+        <a href="#!edit" class="btn btn-default">Editar</a>
+        <a href="#!remove" class="btn btn-default">Remover</a>
+    </div>
+</div>
+

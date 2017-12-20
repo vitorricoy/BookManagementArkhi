@@ -2,6 +2,7 @@ package com.vitorricoy.bookmanagement.model.persistenceInterface;
 
 import com.vitorricoy.bookmanagement.model.domain.Review;
 import com.vitorricoy.bookmanagement.model.exception.PersistenceException;
+import java.util.List;
 
 /**
  * Interface to define the ReviewPersistence's methods
@@ -40,4 +41,12 @@ public interface ReviewPersistenceInterface {
      * @throws com.vitorricoy.bookmanagement.model.exception.PersistenceException
      */
     public Review updateReview(Review newReview, Long id) throws PersistenceException;
+    
+    /**
+     * List all reviews
+     * @return A list with all reviews
+     * @throws com.vitorricoy.bookmanagement.model.exception.PersistenceException
+     */
+    public List<Review> listAll() throws PersistenceException;
+    
 }

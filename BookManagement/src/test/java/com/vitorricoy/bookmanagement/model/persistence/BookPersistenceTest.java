@@ -209,4 +209,18 @@ public class BookPersistenceTest {
         assertEquals(0, result.size());
     }
     
+    /**
+     * Test of listAll method, of class BookPersistence.
+     */
+    @org.junit.Test
+    public void listAll() throws Exception {
+        System.out.println("listAll");
+        Book book = new Book("1940593744332", "Trips", authors, "Reading Inc", release, 30.00, reviews);
+        int size1 = persistence.listAll().size();
+        assertEquals(size1, 0);
+        persistence.insertBook(book);
+        int size2 = persistence.listAll().size();
+        assertEquals(size2, 1);
+    }
+    
 }

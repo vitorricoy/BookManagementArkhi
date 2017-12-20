@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="37" failures="0" name="com.vitorricoy.bookmanagement.model.service.BookServiceTest" time="0.011" errors="0" skipped="0">
+<testsuite tests="38" failures="0" name="com.vitorricoy.bookmanagement.model.service.BookServiceTest" time="0" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.8.0_152\jre\bin"/>
@@ -65,7 +65,7 @@
   <testcase classname="com.vitorricoy.bookmanagement.model.service.BookServiceTest" name="testGetBookById2" time="0"/>
   <testcase classname="com.vitorricoy.bookmanagement.model.service.BookServiceTest" name="testGetBookById3" time="0"/>
   <testcase classname="com.vitorricoy.bookmanagement.model.service.BookServiceTest" name="testUpdateBook1" time="0"/>
-  <testcase classname="com.vitorricoy.bookmanagement.model.service.BookServiceTest" name="testUpdateBook2" time="0.001"/>
+  <testcase classname="com.vitorricoy.bookmanagement.model.service.BookServiceTest" name="testUpdateBook2" time="0"/>
   <testcase classname="com.vitorricoy.bookmanagement.model.service.BookServiceTest" name="testUpdateBook3" time="0"/>
   <testcase classname="com.vitorricoy.bookmanagement.model.service.BookServiceTest" name="testUpdateBook4" time="0"/>
   <testcase classname="com.vitorricoy.bookmanagement.model.service.BookServiceTest" name="testUpdateBook5" time="0"/>
@@ -81,7 +81,7 @@
   <testcase classname="com.vitorricoy.bookmanagement.model.service.BookServiceTest" name="testInsertBook4" time="0"/>
   <testcase classname="com.vitorricoy.bookmanagement.model.service.BookServiceTest" name="testInsertBook5" time="0"/>
   <testcase classname="com.vitorricoy.bookmanagement.model.service.BookServiceTest" name="testInsertBook6" time="0"/>
-  <testcase classname="com.vitorricoy.bookmanagement.model.service.BookServiceTest" name="testInsertBook7" time="0.001"/>
+  <testcase classname="com.vitorricoy.bookmanagement.model.service.BookServiceTest" name="testInsertBook7" time="0"/>
   <testcase classname="com.vitorricoy.bookmanagement.model.service.BookServiceTest" name="testInsertBook8" time="0"/>
   <testcase classname="com.vitorricoy.bookmanagement.model.service.BookServiceTest" name="testInsertBook9" time="0"/>
   <testcase classname="com.vitorricoy.bookmanagement.model.service.BookServiceTest" name="testUpdateBook10" time="0"/>
@@ -90,9 +90,10 @@
   <testcase classname="com.vitorricoy.bookmanagement.model.service.BookServiceTest" name="testUpdateBook13" time="0"/>
   <testcase classname="com.vitorricoy.bookmanagement.model.service.BookServiceTest" name="testUpdateBook14" time="0"/>
   <testcase classname="com.vitorricoy.bookmanagement.model.service.BookServiceTest" name="testUpdateBook15" time="0"/>
+  <testcase classname="com.vitorricoy.bookmanagement.model.service.BookServiceTest" name="listAll" time="0"/>
   <testcase classname="com.vitorricoy.bookmanagement.model.service.BookServiceTest" name="testInsertBoo2" time="0"/>
   <testcase classname="com.vitorricoy.bookmanagement.model.service.BookServiceTest" name="testInsertBook10" time="0"/>
-  <testcase classname="com.vitorricoy.bookmanagement.model.service.BookServiceTest" name="testInsertBook11" time="0.001"/>
+  <testcase classname="com.vitorricoy.bookmanagement.model.service.BookServiceTest" name="testInsertBook11" time="0"/>
   <testcase classname="com.vitorricoy.bookmanagement.model.service.BookServiceTest" name="testInsertBook12" time="0"/>
   <testcase classname="com.vitorricoy.bookmanagement.model.service.BookServiceTest" name="testGetBookByAuthor1" time="0"/>
   <testcase classname="com.vitorricoy.bookmanagement.model.service.BookServiceTest" name="testGetBookByAuthor2" time="0"/>

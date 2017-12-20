@@ -2,6 +2,7 @@ package com.vitorricoy.bookmanagement.model.persistenceInterface;
 
 import com.vitorricoy.bookmanagement.model.domain.Author;
 import com.vitorricoy.bookmanagement.model.exception.PersistenceException;
+import java.util.List;
 
 /**
  * Interface to define the AuthorPersistence's methods
@@ -40,4 +41,11 @@ public interface AuthorPersistenceInterface{
      * @throws com.vitorricoy.bookmanagement.model.exception.PersistenceException
      */
     public Author updateAuthor(Author newAuthor, Long id) throws PersistenceException;
+    
+    /**
+     * List all author
+     * @return A list with all authors
+     * @throws com.vitorricoy.bookmanagement.model.exception.PersistenceException
+     */
+    public List<Author> listAll() throws PersistenceException;
 }

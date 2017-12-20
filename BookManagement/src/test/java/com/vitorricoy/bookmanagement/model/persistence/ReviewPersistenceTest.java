@@ -177,4 +177,18 @@ public class ReviewPersistenceTest {
         fail("Updated an invalid key");
     }
     
+    /**
+     * Test of listAll method, of class ReviewPersistence.
+     */
+    @org.junit.Test
+    public void listAll() throws Exception {
+        System.out.println("listAll");
+        Review review = new Review(new Long(0), "Max", 9, "It's excellent");
+        int size1 = persistence.listAll().size();
+        assertEquals(size1, 0);
+        persistence.insertReview(review);
+        int size2 = persistence.listAll().size();
+        assertEquals(size2, 1);
+    }
+    
 }

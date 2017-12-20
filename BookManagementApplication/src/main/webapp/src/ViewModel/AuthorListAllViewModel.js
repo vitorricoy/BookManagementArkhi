@@ -1,0 +1,3 @@
+function AuthorListAllViewModel($scope, remoteService) {
+    
+}

@@ -85,6 +85,11 @@ public class BookPersistence implements BookPersistenceInterface{
     public void cleanData(){
 <span class="fc" id="L86">        table = new HashMap&lt;&gt;();</span>
 <span class="fc" id="L87">    }</span>
+
+    @Override
+    public List&lt;Book&gt; listAll() throws PersistenceException {
+<span class="fc" id="L91">        return new ArrayList(table.values());</span>
+    }
     
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>
