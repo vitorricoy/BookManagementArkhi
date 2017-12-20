@@ -1,0 +1,14 @@
+{
+  "name": "tek-todolist",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "grunt": "^1.0.1"
+  },
+  "devDependencies": {
+    "grunt-contrib-concat": "^1.0.1"
+  }
+}

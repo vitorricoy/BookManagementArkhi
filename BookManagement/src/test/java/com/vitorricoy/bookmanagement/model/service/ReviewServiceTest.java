@@ -21,6 +21,7 @@ import static org.junit.Assert.*;
 public class ReviewServiceTest {
     
     private ReviewService service;
+    private ReviewPersistence persistence;
     
     public ReviewServiceTest() {
     }
@@ -35,11 +36,13 @@ public class ReviewServiceTest {
     
     @Before
     public void setUp() {
-        service = new ReviewService(ReviewPersistence.getInstance());
+        persistence = ReviewPersistence.getInstance();
+        service = new ReviewService(persistence);
     }
     
     @After
     public void tearDown() {
+        persistence.cleanData();
     }
 
     /**

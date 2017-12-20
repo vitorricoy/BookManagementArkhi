@@ -54,6 +54,7 @@ public class BookPersistenceTest {
     
     @After
     public void tearDown() {
+        persistence.cleanData();
     }
 
     /**

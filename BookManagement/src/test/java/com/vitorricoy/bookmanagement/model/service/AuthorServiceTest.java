@@ -22,6 +22,7 @@ import static org.junit.Assert.*;
 public class AuthorServiceTest {
     
     private AuthorService service;
+    private AuthorPersistence persistence;
     
     public AuthorServiceTest() {
     }
@@ -36,11 +37,13 @@ public class AuthorServiceTest {
     
     @Before
     public void setUp() {
-        service = new AuthorService(AuthorPersistence.getInstance());
+        persistence = AuthorPersistence.getInstance();
+        service = new AuthorService(persistence);
     }
     
     @After
     public void tearDown() {
+        persistence.cleanData();
     }
 
     /**

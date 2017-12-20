@@ -40,6 +40,7 @@ public class ReviewPersistenceTest {
     
     @After
     public void tearDown() {
+        persistence.cleanData();
     }
 
     /**

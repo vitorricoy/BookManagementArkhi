@@ -40,6 +40,7 @@ public class AuthorPersistenceTest {
     
     @After
     public void tearDown() {
+        persistence.cleanData();
     }
 
     /**

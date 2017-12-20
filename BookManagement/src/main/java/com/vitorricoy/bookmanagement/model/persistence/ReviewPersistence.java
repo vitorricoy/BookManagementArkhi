@@ -64,4 +64,7 @@ public class ReviewPersistence implements ReviewPersistenceInterface{
         return newReview;
     }
     
+    public void cleanData(){
+        table = new HashMap<>();
+    }
 }

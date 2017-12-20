@@ -29,6 +29,7 @@ public class BookServiceTest {
     private List<Author> authors;
     private List<Review> reviews;
     private Date release;
+    private BookPersistence persistence;
     
     
     public BookServiceTest() {
@@ -44,7 +45,8 @@ public class BookServiceTest {
     
     @Before
     public void setUp() {
-        service = new BookService(BookPersistence.getInstance());
+        persistence = BookPersistence.getInstance();
+        service = new BookService(persistence);
         authors = new ArrayList<>();
         authors.add(new Author(new Long(0), "John", new Date()));
         authors.add(new Author(new Long(1), "Mary", new Date()));
@@ -56,6 +58,7 @@ public class BookServiceTest {
     
     @After
     public void tearDown() {
+        persistence.cleanData();
     }  
     
      /**

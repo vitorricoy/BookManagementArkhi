@@ -1,10 +1,21 @@
-<!DOCTYPE html>
 <html>
     <head>
-        <title>Start Page</title>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Cadastro para Gerenciamento de Livros</title>
+        <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
     </head>
-    <body>
-        <h1>Hello World!</h1>
+    <body ng-app="BookManagement">
+        <div class="container">
+            <div class="row" style="text-align: center">
+                <h1>Cadastro para Gerenciamento de Livros</h1>
+            </div>
+            <div class="row" ng-view>
+                
+            </div>
+        </div>
+        <script src="./assets/js/jquery-3.2.1.min.js"></script>
+        <script src="./assets/js/bootstrap.min.js"></script>
+        <script src="./assets/js/angular.min.js"></script>
+        <script src="./assets/js/angular-route.min.js"></script>
+        <script src="./dist/main.js"></script>
     </body>
 </html>

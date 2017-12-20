@@ -82,4 +82,8 @@ public class BookPersistence implements BookPersistenceInterface{
         return books;
     }
     
+    public void cleanData(){
+        table = new HashMap<>();
+    }
+    
 }

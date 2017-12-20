@@ -64,4 +64,8 @@ public class AuthorPersistence implements AuthorPersistenceInterface{
         return newAuthor;
     }
     
+    public void cleanData(){
+        table = new HashMap<>();
+    }
+    
 }
