@@ -1,0 +1,13 @@
+<div class="row" ng-controller="ViewBooksAuthorViewModel">
+    <h2>Livros de {{author.authorName}} </h2>
+    <br/>
+    <ul class="list-group">
+        <li class="list-group-item" ng-repeat="book in books" id="book{{book.isbn}}">
+            <span>{{book.isbn}} - {{book.Title}} - {{book.publisher}}</span>
+            <span class="pull-right">
+                <span><button class="btn btn-xs btn-default" ng-click="viewBook(book)">Ver livro</button></span>
+            </span>
+        </li>
+    </ul>
+</div>
+

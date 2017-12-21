@@ -1,0 +1,18 @@
+<div class="row" ng-controller="AddReviewViewModel">
+    <div class="form-group">
+        <label for="isbn">ISBN do livro</label>
+        <input ng-model="newIsbn" type="text" id="isbn" class="form-control" placeholder="ISBN do livro">
+        <br/>
+        <label for="reviewAuthorName">Autor da Crítica</label>
+        <input ng-model="newReviewAuthorName" id="reviewAuthorName" name="isbn" type="text" class="form-control" placeholder="Nome do Autor da Critica"/>
+        <br/>
+        <label for="reviewRating">Nota da Crítica (1 a 10)</label>
+        <input ng-model="newReviewRating" class="form-control" id="reviewRating" placeholder="Nota da crítica" type="number"/>
+        <br/>
+        <label for="reviewTxt">Explicação da nota</label>
+        <textarea ng-model="newReviewTxt" id="reviewTxt" class="form-control"></textarea>
+    </div>
+    <div class="form-group">
+        <button ng-click="addReview()" class="btn btn-default">Adicionar Crítica</button>
+    </div>
+</div>

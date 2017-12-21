@@ -8,7 +8,7 @@
     <br/>
     <h4>Editora {{currentBook.publisher}}</h4>
     <br/>
-    <h4>Lançamento: {{currentBook.releaseDate | date:'dd-MM-yyyy'}}</h4>
+    <h4>Lançamento: {{currentBook.releaseDate | date:'dd/MM/yyyy'}}</h4>
     <br/>
     <h4>Preço: {{price}}</h4>
     <br/>
@@ -17,11 +17,12 @@
         <p>Autor: {{review.authorName}}</p>
         <p>Nota: {{review.rating}}</p>
         <p>Explicação: {{review.reviewTxt}}</p>
+        <br>
     </div>
     <br/>
     <div>
-        <a href="#!edit" class="btn btn-default">Editar</a>
-        <a href="#!remove" class="btn btn-default">Remover</a>
+        <a href="#!editBook" class="btn btn-default">Editar</a>
+        <a ng-click="removeBook(currentBook.isbn)" class="btn btn-default">Remover</a>
     </div>
 </div>
 

@@ -4,7 +4,6 @@ function AddBookViewModel($scope, $location, remoteService) {
     });
     
     $scope.addBook=function(){
-        console.log($scope.newAuthors);
         remoteService.addReview($scope.newReviewAuthorName, $scope.newReviewRating, $scope.newReviewTxt).then(function(r){
             let reviews = [r];
             let authors = [];

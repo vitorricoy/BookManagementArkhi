@@ -1,0 +1,11 @@
+<div class="row" ng-controller="AuthorListAllViewModel">
+    <ul class="list-group">
+        <li class="list-group-item" ng-repeat="author in authors" id="author{{author.id}}">
+            <span>{{author.authorName}} - {{author.birthFormatted | date:'dd/MM/yyyy'}} - {{author.deathFormatted | date:'dd/MM/yyyy'}}</span>
+            <span class="pull-right">
+                <span><button class="btn btn-xs btn-default" ng-click="viewBooks(author.id)">Ver livros</button></span>
+                <span><a style="color:#333; text-decoration:none;" ng-click="removeAuthor(author.id)"><span class="glyphicon glyphicon-trash"></span></a></span>
+            </span>
+        </li>
+    </ul>
+</div>

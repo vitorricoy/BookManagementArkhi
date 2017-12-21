@@ -25,13 +25,13 @@
             <input ng-model="newPrice" id="price" type="number" class="form-control" placeholder="Preço do livro"/>
         </div>
         <div class="form-group">
-            <label for="authorsBook">Autores do livro</label>
+            <label for="newAuthors">Autores do livro</label>
             <select ng-model="newAuthors" multiple class="form-control" id="newAuthors" name="newAuthors" ng-options="author.id as author.authorName for author in authors">
             </select>
         </div>
         <div class="form-group">
             <label for="reviewAuthorName">Autor da Crítica</label>
-            <input ng-model="newReviewAuthorName" id="reviewAuthorName" name="isbn" type="text" class="form-control searchInput" placeholder="Nome do Autor da Critica"/>
+            <input ng-model="newReviewAuthorName" id="reviewAuthorName" name="isbn" type="text" class="form-control" placeholder="Nome do Autor da Critica"/>
             <br/>
             <label for="reviewRating">Nota da Crítica (1 a 10)</label>
             <input ng-model="newReviewRating" class="form-control" id="reviewRating" placeholder="Nota da crítica" type="number"/>

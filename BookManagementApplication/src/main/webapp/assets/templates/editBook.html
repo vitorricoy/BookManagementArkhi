@@ -1,0 +1,36 @@
+<br/>
+<div class="row" style="text-align: center;">
+    <h3>Editar Livro</h3>
+</div>
+<div class="row" ng-controller="EditBookViewModel">
+    <div>
+        <div class="form-group">
+            <label for="isbn">Isbn do livro</label>
+            <input id="isbn" type="text" class="form-control" disabled placeholder="{{book.isbn}}"/>
+        </div>
+        <div class="form-group">
+            <label for="title">Titulo do livro</label>
+            <input ng-model="book.Title" id="title" type="text" class="form-control" placeholder="Titulo do livro"/>
+        </div>
+        <div class="form-group">
+            <label for="publisher">Editora do livro</label>
+            <input ng-model="book.publisher" id="publisher" type="text" class="form-control" placeholder="Editora do livro"/>
+        </div>
+        <div class="form-group">
+            <label for="releaseDate">Publicação do livro (dd/mm/aaaa)</label>
+            <input ng-model="book.releaseDate" id="releaseDate" type="date" class="form-control" placeholder="Data de publicação"/>
+        </div>
+        <div class="form-group">
+            <label for="price">Preço do livro</label>
+            <input ng-model="book.price" id="price" type="number" class="form-control" placeholder="Preço do livro"/>
+        </div>
+        <div class="form-group">
+            <label for="authorsBook">Autores do livro</label>
+            <select ng-model="authorsUpdate" multiple class="form-control" id="authorsBook" ng-options="author.id as author.authorName for author in authors">
+            </select>
+        </div>
+        <div class="form-group">
+            <button ng-click="editBook()" type="button" class="btn btn-default">Concluir</button>
+        </div>
+    </div>
+</div>

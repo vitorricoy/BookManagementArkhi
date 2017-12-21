@@ -1,7 +1,5 @@
 function RemoteService($http) {
     
-    var BACKEND_URL = '../backend/index.php';
-    
     this.bookSearchISBN = function(isbn) {
         return $http.post('BookSearchISBN', JSON.stringify(isbn)).then(function(response) {
             if(response.data.status==="OK"){
@@ -21,10 +19,11 @@ function RemoteService($http) {
     this.addAuthor = function(name, birth, death){
         let data = {
             "authorName": name,
-            "birthDate": birth
+            "birthDate": birth,
+            "deathDate": undefined
         };
-        if(Boolean(death)){
-            data.death = death;
+        if(death){
+            data.deathDate = death;
         }
         return $http.post('AuthorInsert', JSON.stringify(data)).then(function(response) {
             if(response.data.status==="OK"){
@@ -65,6 +64,42 @@ function RemoteService($http) {
     
     this.authorGetById = function(id){
         return $http.post('AuthorSearch', JSON.stringify(id)).then(function(response) {
+            if(response.data.status==="OK"){
+                return response.data.content;
+            }
+        });
+    };
+    
+    this.authorRemove = function(id){
+        return $http.post('AuthorRemove', JSON.stringify(id)).then(function(response) {
+            if(response.data.status==="OK"){
+                return response.data.content;
+            }
+        });
+    };
+    
+    this.bookRemove = function(isbn){
+        return $http.post('BookRemove', JSON.stringify(isbn)).then(function(response) {
+            if(response.data.status==="OK"){
+                return response.data.content;
+            }
+        });
+    };
+    
+    this.updateBook = function(book){
+        let data = {
+            "isbn": book.isbn,
+            "book": book
+        };
+        return $http.post('BookUpdate', JSON.stringify(data)).then(function(response) {
+            if(response.data.status==="OK"){
+                return response.data.content;
+            }
+        });
+    };
+    
+    this.getBooksByAuthor = function(author){
+        return $http.post('BookSearchAuthor', JSON.stringify(author)).then(function(response) {
             if(response.data.status==="OK"){
                 return response.data.content;
             }

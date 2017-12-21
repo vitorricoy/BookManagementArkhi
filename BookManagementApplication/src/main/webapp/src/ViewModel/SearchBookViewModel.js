@@ -5,7 +5,11 @@ function SearchBookViewModel($scope, $location, remoteService) {
         remoteService.bookSearchISBN($scope.searchIsbn).then(function(book){
             console.log(book);
             currentBook = book;
-            $location.path('/showBook');
+            if(book){
+                $location.path('/showBook');
+            }else{
+                alert('Livro nao encontrado');
+            }
         });
     };
     
